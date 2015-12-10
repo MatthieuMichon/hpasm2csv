@@ -30,7 +30,7 @@ As the CSV will grow bigger, a logrotate rule manages it size by splitting and c
 
 # Milestones
 
-- [ ] listing of relevant system health metrics
+- [X] listing of relevant system health metrics
  
 Scripting:
 
