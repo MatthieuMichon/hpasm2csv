@@ -31,13 +31,19 @@ As the CSV will grow bigger, a logrotate rule manages it size by splitting and c
 # Milestones
 
 - [ ] listing of relevant system health metrics
+ 
 Scripting:
+
 - [ ] `hpasmcli` output in a text file
 - [ ] `hpasmcli` output parsed in a set of values
 - [ ] `hpasmcli` output parsed and appended in a CSV file
+
 Cron:
+
 - [ ] dummy script called several times per hour
 - [ ] `hpasm2csv` script called
+
 Logrotate:
+
 - [ ] `logortate` rule for handling the CSV file
 
