@@ -58,5 +58,5 @@ Call `hpasmcli` save and display the results without any formating:
 SHOW_TEMP="show temp"
 
 TEMPS="$(/sbin/hpasmcli -s "$SHOW_TEMP")"
-echo "$TEMPS"
+echo "$TEMPS" > latest_temps.log
 ```
