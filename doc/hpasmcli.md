@@ -49,6 +49,12 @@ The script must perform the following actions:
 Call `hpasmcli` save and display the results without any formating:
 ```shell
 #!/bin/sh
+
+# Caution: Security Risk
+#
+# This script may be executed by cron with root privileges. As such the
+# content of this script and any binaries or scripts called must be trusted.
+
 SHOW_TEMP="show temp"
 
 TEMPS="$(/sbin/hpasmcli -s "$SHOW_TEMP")"
