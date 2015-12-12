@@ -46,7 +46,7 @@ The script must perform the following actions:
 
 ## Simple Versions
 
-Call `hpasmcli` save and display the results without any formating:
+Calls `hpasmcli` save and saves the results without any formating:
 ```shell
 #!/bin/sh
 
