@@ -34,9 +34,9 @@ As the CSV will grow bigger, a logrotate rule manages it size by splitting and c
  
 Scripting:
 
-- [ ] `hpasmcli` output in a text file
-- [ ] `hpasmcli` output parsed in a set of values
-- [ ] `hpasmcli` output parsed and appended in a CSV file
+- [X] `hpasmcli` output in a text file
+- [X] `hpasmcli` output parsed in a set of values
+- [X] `hpasmcli` output parsed and appended in a CSV file
 
 Cron:
 
