@@ -60,3 +60,31 @@ SHOW_TEMP="show temp"
 TEMPS="$(/sbin/hpasmcli -s "$SHOW_TEMP")"
 echo "$TEMPS" > latest_temps.log
 ```
+
+Slightly more complex verion, grapbs health information from temp sensors, fan speed and P/S condition. Extract only the relevant data before appending it to a CSV file.
+```bash
+#!/bin/bash
+
+################################################################################
+# CAUTION: Security Risk
+# This script is intended be executed by cron with root privileges.
+# As such, anything this scripts calls must be trusted and may be modified only
+# by root.
+################################################################################
+
+epoch="$(date +%s)"
+temps="$( \
+	/sbin/hpasmcli -s "show temp" | \
+	awk '/#/ && !/-/ {sub(/\/.*/, "", $3); printf("%s,", $3)}' | \
+	sed 's/.$//')"
+fans="$( \
+	/sbin/hpasmcli -s "show fans" | \
+	awk '/#/ && !/-/ {sub(/\/.*/, "", $5); printf("%s,", $5)}' | \
+	sed 's/.$//')"
+pwr="$( \
+	/sbin/hpasmcli -s "show powersupply" | \
+	awk '/Condition/ {sub(/\/.*/, "", $2); printf("%s,", $2)}' | \
+	sed 's/.$//')"
+
+echo "$epoch,$temps,$fans,$pwr" >> out.csv
+```
