@@ -42,7 +42,7 @@ The script must perform the following actions:
 * Convert to decimal values
 * Add a comma separator
 * Prepend the epoch time
-* Append to a given CSV file
+* ~~Append to a given CSV file~~ this shall be done from the crontab entry
 
 ## Simple Versions
 
@@ -58,7 +58,7 @@ Calls `hpasmcli` save and saves the results without any formating:
 SHOW_TEMP="show temp"
 
 TEMPS="$(/sbin/hpasmcli -s "$SHOW_TEMP")"
-echo "$TEMPS" > latest_temps.log
+echo "$TEMPS"
 ```
 
 Slightly more complex verion, grapbs health information from temp sensors, fan speed and P/S condition. Extract only the relevant data before appending it to a CSV file.
@@ -86,5 +86,5 @@ pwr="$( \
 	awk '/Condition/ {sub(/\/.*/, "", $2); printf("%s,", $2)}' | \
 	sed 's/.$//')"
 
-echo "$epoch,$temps,$fans,$pwr" >> out.csv
+echo "$epoch,$temps,$fans,$pwr"
 ```
