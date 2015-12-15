@@ -1,1 +1,52 @@
-../../g8/home/oyaji/hpasm2csv.sh
+#!/bin/bash
+
+################################################################################
+# CAUTION: Security Risk
+# This script is intended be executed by cron with root privileges.
+# As such, anything this scripts calls must be trusted and may be modified only
+# by root.
+################################################################################
+
+# epoch time (seconds since jan 1st 1970)
+
+epoch="$(date +%s)"
+
+
+# - run hpasmcli -s "show temp"
+# - text processing
+#   - remove lines NOT containing a sharp
+#   - remove lines containing a dash
+#   - remove "C/xxF" for example in "33C/85F" in the third column
+#   - return the third column of each line separated with a coma
+#   - strip the trailing coma
+
+temps="$( \
+	/sbin/hpasmcli -s "show temp" | \
+	awk '/#/ && !/-/ {sub(/C\/.*/, "", $3); printf("%s,", $3)}' | \
+	sed 's/.$//')"
+
+
+# - run hpasmcli -s "show fans"
+# - text processing
+#   - remove lines NOT containing a sharp
+#   - remove "%" in the fifth column
+#   - return the fifth column
+
+fans="$( \
+	/sbin/hpasmcli -s "show fans" | \
+	awk '/#/ {sub(/%/, "", $5); printf("%s", $5)}' )"
+
+
+# - run hpasmcli -s "show powersupply"
+# - text processing
+#   - remove lines NOT containing the word "Condition"
+#   - remove "%" in the fifth column
+#   - return the fifth column
+
+pwr="$( \
+	/sbin/hpasmcli -s "show powersupply" | \
+	awk '/Condition/ {sub(/\/.*/, "", $2); print ($2 == "Ok") ? "1": "0"}' )"
+
+
+
+echo "$epoch,$temps,$fans,$pwr"
