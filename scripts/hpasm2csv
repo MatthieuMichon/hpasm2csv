@@ -40,8 +40,7 @@ fans="$( \
 # - run hpasmcli -s "show powersupply"
 # - text processing
 #   - remove lines NOT containing the word "Condition"
-#   - remove "%" in the fifth column
-#   - return the fifth column
+#   - return "1" if the second column matches with "Ok" else return 0
 
 pwr="$( \
 	/sbin/hpasmcli -s "show powersupply" | \
