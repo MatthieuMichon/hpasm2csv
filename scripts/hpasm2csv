@@ -45,8 +45,7 @@ fans="$( \
 
 pwr="$( \
 	/sbin/hpasmcli -s "show powersupply" | \
-	awk '/Condition/ {sub(/\/.*/, "", $2); print ($2 == "Ok") ? "1": "0"}' )"
-
+	awk '/Condition/ {print ($2 == "Ok") ? "1": "0"}' )"
 
 
 echo "$epoch,$temps,$fans,$pwr"
