@@ -29,8 +29,15 @@ Steps:
 
 As the CSV will grow bigger, a logrotate rule manages it size by splitting and compressing older entries.
 
-## CSV Fields
+## CSV
 
+Example:
+```csv
+1450311137,20,40,28,58,42,43,42,37,39,10,1
+1450311301,20,40,28,58,42,43,42,37,39,10,1
+```
+
+### Fields
 |Epoch Time|Ambient Temp|CPU Temp|DIMM Temp|M/B Temp #1|M/B Temp #2|M/B Temp #3|M/B Temp #4|IO Zone Temp|Chassis Temp|Fan %|P/S Ok|
 |---|---|---|---|---|---|---|---|---|---|---|---|
 
