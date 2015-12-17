@@ -1,0 +1,8 @@
+/var/log/hpasm2csv/*.log {
+	weekly
+	missingok
+	rotate 52
+	compress
+	delaycompress
+	notifempty
+}
