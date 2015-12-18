@@ -2,7 +2,7 @@
 
 ################################################################################
 # CAUTION: Security Risk
-# This script is intended be executed by cron with root privileges.
+# This script is intended to be executed by cron under root privileges.
 # As such, anything this scripts calls must be trusted and may be modified only
 # by root.
 ################################################################################
