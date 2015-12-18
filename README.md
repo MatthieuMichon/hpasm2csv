@@ -58,5 +58,5 @@ Cron:
 
 Logrotate:
 
-- [ ] `logortate` rule for handling the CSV file
+- [X] `logortate` rule for handling the CSV file
 
