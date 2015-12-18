@@ -1,0 +1,4 @@
+# The following line must be added after invoking "sudo crontab -e"
+# Refer to INSTALL.md for details
+
+*/15 * * * * if [ -x /usr/sbin/hpasm2csv ]; then /usr/sbin/hpasm2csv >> /var/log/hpasm2csv/hpasm2csv.csv.log; fi
